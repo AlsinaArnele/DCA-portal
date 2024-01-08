@@ -1,0 +1,1 @@
+This project contains files for an employee portal that allows the employee to access different parent company services. It also features an admin panel where the user's access can be toggled for each of the features and their access to the portal monitored.
