@@ -55,27 +55,27 @@ try {
                 // EMAIL THE USER
                 try {
                     //Server settings
-                    $mail->SMTPDebug = SMTP::DEBUG_OFF; // Set to DEBUG_SERVER for detailed debug output
+                    $mail->SMTPDebug = SMTP::DEBUG_OFF; // Change to 'DEBUG_SERVER' for detailed output
                     $mail->isSMTP();
-                    $mail->Host = 'smtp.gmail.com'; // Specify your SMTP server
+                    $mail->Host = 'smtp.gmail.com'; //SMTP servers, can be google, microsoft etc.
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'leviskibet2002@gmail.com'; // Your SMTP username
-                    $mail->Password = 'ykns mnlz ypnl zrpv'; // Your SMTP password
+                    $mail->Username = 'leviskibet2002@gmail.com';
+                    $mail->Password = 'ykns mnlz ypnl zrpv';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
                 
                     //Recipients
                     $mail->setFrom('leviskibet2002@gmail.com', 'DCA ADMIN');
-                    $mail->addAddress($_POST['Email'], 'Recipient Name'); // Add a recipient
+                    $mail->addAddress($_POST['Email'], $username);
                 
-                    //Content
-                    $mail->isHTML(true); // Set email format to HTML
+                    //Email body
+                    $mail->isHTML(true); // Set email format to HTML for rich text formatting
                     $mail->Subject = 'DCA Portal Verification';
                     $mail->Body = 'Your verification code is ' . $token . '.';
                 
                     $mail->send();
                     $myMessage = "Registration successful. Please check your email for verification.";
-                    header("Location: ../signup.php?response=" . urlencode($myMessage));
+                    header("Location: ../verify.php?response=" . urlencode($myMessage));
                 } catch (Exception $e) {
                     $myMessage = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 }

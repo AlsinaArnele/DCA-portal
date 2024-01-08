@@ -1,10 +1,10 @@
 <?php 
 $host = 'localhost';    
 $dbname = 'dca-portal'; 
-// $username = 'root';
-// $password = '';
-$username = 'wariditesting';
-$password = '_5LG^;*im4T1'; 
+$username = 'root';
+$password = '';
+// $username = 'wariditesting';
+// $password = '_5LG^;*im4T1'; 
 
 try {
     $dbh = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

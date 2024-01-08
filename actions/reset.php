@@ -32,25 +32,21 @@ try {
 
         // Mail function
         try {
-            //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_OFF; // Set to DEBUG_SERVER for detailed debug output
+            $mail->SMTPDebug = SMTP::DEBUG_OFF;
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com'; // Specify your SMTP server
+            $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'leviskibet2002@gmail.com'; // Your SMTP username
-            $mail->Password = 'ykns mnlz ypnl zrpv'; // Your SMTP password
+            $mail->Username = 'leviskibet2002@gmail.com';
+            $mail->Password = 'ykns mnlz ypnl zrpv';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
         
-            //Recipients
             $mail->setFrom('leviskibet2002@gmail.com', 'DCA ADMIN');
-            $mail->addAddress($email, 'Recipient Name'); // Add a recipient
+            $mail->addAddress($email, 'Recipient Name');
         
-            //Content
-            $mail->isHTML(true); // Set email format to HTML
+            $mail->isHTML(true); // Set email format to HTML for rich text formatting
             $mail->Subject = 'DCA Portal Password Reset';
             $mail->Body = 'Follow this link to reset your password: ' . $resetLink . '.';
-        
             $mail->send();
 
             $myMessage = "Please check your email for Password reset link.";
